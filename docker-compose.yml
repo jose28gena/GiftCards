@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # Obligatoria: mínimo 16 caracteres. Ej.: API_KEY=$(openssl rand -hex 24)
+      Security__ApiKey: ${API_KEY:?Define la variable API_KEY antes de levantar el servicio}
+    volumes:
+      - giftcards-data:/data
+
+volumes:
+  giftcards-data:
